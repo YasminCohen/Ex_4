@@ -14,6 +14,11 @@ void swap(int *i, int *j){
 void TSP(p_node head)
 {
 	int arrlen = -1;
+    int j, i;
+    int best_path, current_path;
+    int existsPath, pathFound; 
+    pathFound = 0;
+    best_path = 999999;
     scanf("%d", &arrlen);
     
     p_node graph = head;
@@ -24,12 +29,6 @@ void TSP(p_node head)
         scanf("%d", arr+i);
     }
     
- 
-    int j, i;
-    int best_path, current_path;
-    int existsPath, pathFound; 
-    pathFound = 0;
-    best_path = 999999;
 
     for(j=0; j < arrlen; j++){
 
@@ -37,7 +36,6 @@ void TSP(p_node head)
 
          swap(arr+i, arr+i+1);
               
-    
             current_path = 0;
             existsPath = 1;
             for(int node = 0; node < arrlen-1;  node++){
