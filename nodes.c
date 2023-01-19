@@ -89,9 +89,10 @@ void addNode_Part_B(p_node *head)
         p_node newNode = (p_node)(malloc(sizeof(node)));
         if (newNode == NULL)
         exit(1);
+        newNode->edges = NULL;
         inGraph->next = newNode;
         newNode->nodeId = src;
-        newNode->edges = NULL;
+        
         newNode->next = NULL;
         
         
