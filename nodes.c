@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "graph.h"
-
+#include <limits.h>
 p_node getNode(int id, p_node *head)
 {
     p_node temp = *head;

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "graph.h"
+#include <limits.h>
 
 p_dijkstra getPointerDijkstra(p_dijkstra head, int id);
 

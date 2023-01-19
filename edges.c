@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "graph.h"
-
+#include <limits.h>
 
 void addEdge(p_node currentNode, int dest, int w, p_node *head)
 {

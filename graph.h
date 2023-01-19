@@ -1,7 +1,8 @@
 #ifndef GRAPH_H
 #define GRAPH_H
+#include <limits.h>
 
-#define INFINITY 100000
+#define INFINITY INT_MAX
 
 typedef struct Edge *p_edge;
 

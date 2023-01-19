@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "graph.h"
-
+#include <limits.h>
 
 p_node createGraph(int num_nodes)
 {

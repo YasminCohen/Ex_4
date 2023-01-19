@@ -2,7 +2,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include "graph.h"
-
+#include <limits.h>
 int main()
 {
     char choice;
@@ -50,7 +50,8 @@ int main()
         }
         if (choice == 'S')
         {
-            int start = -1, end = -1;
+            int start = -1;
+            int end = -1;
             scanf("%d %d", &start, &end);
             int dist = shortestPath(*head, start, end);
             printf("Dijsktra shortest path: %d \n", dist);
