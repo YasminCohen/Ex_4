@@ -28,30 +28,16 @@ void addNode(p_node *head, int src)
     int dest,weight;
     dest =-1;
     weight =-1;
-    p_node temp1;
-    p_node temp2 = *head;
-
-    while (temp2 != NULL)
-    {
-        if (temp2->nodeId != src)
-        {
-            temp2 = temp2->next;
-        }
-        else
-        {
-            temp1 = temp2;
-        }
-    }
-    if(temp2== NULL)
-        temp1 = NULL;
+    p_node temp;
     
+    temp = getNode(src, head);
     while (scanf("%d", &dest) != 0 && scanf("%d", &weight) != 0)
     {
         if (isalpha(dest) || isalpha(weight))
         {
             return;
         }
-        addEdge(temp1, dest, weight, head);
+        addEdge(temp, dest, weight, head);
     }
 }
 
@@ -61,28 +47,13 @@ void addNode_Part_B(p_node *head)
     scanf("%d", &src);
     dest = -1;
     weight =-1;
-    p_node temp0;
-    p_node start = *head;
-
-    while (start != NULL)
+    p_node temp;
+    temp = getNode(src, head);
+    if (temp != NULL)
     {
-        if (start->nodeId != src)
-        {
-            start = start->next;
-        }
-        else
-        {
-            temp0 = start;
-        }
-    }
-     if(start== NULL)
-        temp0 = NULL;
-    
-    if (temp0 != NULL)
+         if (temp->edges != NULL)
     {
-         if (temp0->edges != NULL)
-    {
-        p_edge temp1 = temp0->edges;
+        p_edge temp1 = temp->edges;
 
         while (temp1 != NULL)
         {
@@ -94,9 +65,9 @@ void addNode_Part_B(p_node *head)
     }
 
     else{
-        free(temp0->edges);
+        free(temp->edges);
     }
-        temp0->edges = NULL;
+        temp->edges = NULL;
         
         while (scanf("%d", &dest) != 0 && scanf("%d", &weight) != 0)
         {
@@ -104,7 +75,7 @@ void addNode_Part_B(p_node *head)
             {
                 return;
             }
-            addEdge(temp0, dest, weight, head);
+            addEdge(temp, dest, weight, head);
         }
         
     }
