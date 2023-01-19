@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "graph.h"
 
-//*********function for solving TSP*********//
 
 
 
@@ -25,11 +24,10 @@ void TSP(p_node head)
         scanf("%d", arr+i);
     }
     
-    //calculates all permutations of a given nodes and
-    //on each permutation calculates all shortest paths between nodes
+ 
     int j, i;
     int best_path, current_path;
-    int existsPath, pathFound; //flags
+    int existsPath, pathFound; 
     pathFound = 0;
     best_path = 999999;
 
@@ -39,7 +37,7 @@ void TSP(p_node head)
 
          swap(arr+i, arr+i+1);
               
-            //one more loop that goes over all given nodes and finds shortest path between each node
+    
             current_path = 0;
             existsPath = 1;
             for(int node = 0; node < arrlen-1;  node++){
@@ -49,7 +47,7 @@ void TSP(p_node head)
                 }
                     current_path += dijk;
             }
-             //finds best solution
+        
 
             if (existsPath && (current_path < best_path)){
                 best_path = current_path;
@@ -63,6 +61,5 @@ void TSP(p_node head)
 
     printf("TSP shortest path: %d \n",best_path);
 
-    //free the memory
     free(arr);
 }
