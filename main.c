@@ -38,7 +38,7 @@ int main()
         if (choice == 'B')
         {
 
-            addNode_B(head);
+            addNode_Part_B(head);
 
             continue;
         }

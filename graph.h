@@ -35,7 +35,7 @@ p_node getNode(int id, p_node *head);
 
 void addEdge(p_node temp, int dest, int w, p_node *head);
 
-void addNode_B(p_node *head);
+void addNode_Part_B(p_node *head);
 
 void deleteNode(p_node *head);
 

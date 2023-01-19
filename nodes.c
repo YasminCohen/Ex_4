@@ -40,11 +40,10 @@ void addNode(p_node *head, int src)
     }
 }
 
-void addNode_B(p_node *head)
+void addNode_Part_B(p_node *head)
 {
-    int src;
+    int src ,dest, weight;
     scanf("%d", &src);
-    int dest, weight;
     dest = -1;
     weight =-1;
     p_node temp;

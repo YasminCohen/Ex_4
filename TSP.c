@@ -31,7 +31,7 @@ void TSP(p_node head)
     pathFound = 0;
     best_path = 999999;
 
-    for(j=1; j <= arrlen; j++){
+    for(j=0; j < arrlen; j++){
 
         for(i=0; i < arrlen-1; i++){
 
@@ -45,7 +45,7 @@ void TSP(p_node head)
                 if (dijk == -1){
                     existsPath = 0;
                 }
-                    current_path += dijk;
+                    current_path = current_path + dijk;
             }
         
 

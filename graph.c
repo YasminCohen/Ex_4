@@ -6,17 +6,18 @@
 
 p_node createGraph(int num_nodes)
 {
-    p_node newNode, temp, head = NULL;
+    p_node newNode, index, head = NULL;
     
-    head = (p_node)malloc(sizeof(node));
-    if (head == NULL)
-    exit(1);
+    if((head = (p_node)malloc(sizeof(node))) == NULL)
+        exit(1);
+
+    head->next = NULL; 
 
     head->nodeId = 0;
-    head->next = NULL;
+    
     head->edges = NULL;
 
-    temp = head;
+    index = head;
     
     for (int i = 0; i < num_nodes-1; i++)
     {
@@ -24,32 +25,32 @@ p_node createGraph(int num_nodes)
         if (newNode == NULL)
         exit(1);
         
-        temp->next = newNode;
-
+        index->next = newNode;
+        newNode->edges = NULL;
         newNode->nodeId = (i+1);
         newNode->next = NULL;
-        newNode->edges = NULL;
+        
 
-        temp = temp->next;
+        index = index->next;
     }
     return head;
 }
 
 void deleteGraph(p_node *head)
 {
-    p_node tempNode = *head;
-    while (tempNode != NULL)
+    p_node indexNode = *head;
+    while (indexNode != NULL)
     {
-        p_edge tempEdge = tempNode->edges;
-        while (tempEdge != NULL)
+        p_edge indexEdge = indexNode->edges;
+        while (indexEdge != NULL)
         {
-            p_edge tempEdgefree = tempEdge;
-            tempEdge = tempEdge->next;
-            free(tempEdgefree);
+            p_edge indexEdgefree = indexEdge;
+            indexEdge = indexEdge->next;
+            free(indexEdgefree);
         }
-        p_node tempFree = tempNode;
-        tempNode = tempNode->next;
-        free(tempFree);
+        p_node indexFree = indexNode;
+        indexNode = indexNode->next;
+        free(indexFree);
     }
-    free(tempNode);
+    free(indexNode);
 }
