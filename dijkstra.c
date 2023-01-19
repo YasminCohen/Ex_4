@@ -2,46 +2,8 @@
 #include <stdlib.h>
 #include "graph.h"
 
-p_dijkstra createDijkstra(p_node start, int src)
-{
-    p_dijkstra head = NULL;
-    p_dijkstra *index = &head;
-    while (start != NULL)
-    {
-        (*index) = (p_dijkstra)malloc(sizeof(dijkstra));
-        if ((*index) == NULL)
-        exit(1);
+p_dijkstra getPointerDijkstra(p_dijkstra head, int id);
 
-        (*index)->node = start;
-        if (start->nodeId == src)
-        {
-            (*index)->weight = 0;
-        }
-        else
-        {
-            (*index)->weight = INFINITY;
-        }
-        (*index)->tag = 0;
-        (*index)->next = NULL;
-        index = &((*index)->next);
-        start = start->next;
-    }
-    return head;
-}
-
-
-p_dijkstra getPointerDijkstra(p_dijkstra head, int id)
-{
-    while (head != NULL)
-    {
-        if (head->node->nodeId == id)
-        {
-            return head;
-        }
-        head = head->next;
-    }
-    return NULL;
-}
 int shortestPath(p_node start, int src, int dest)
 {
     p_dijkstra head = NULL;
@@ -89,7 +51,7 @@ int shortestPath(p_node start, int src, int dest)
         p_edge edgeIndex = u->node->edges;
         while (edgeIndex != NULL)
         {
-            // relax
+     
             p_dijkstra v = getPointerDijkstra(dijkstraHead, edgeIndex->dest->nodeId);
             int newDist = u->weight + edgeIndex->weight;
             if (v->weight > newDist)
@@ -138,4 +100,16 @@ int shortestPath(p_node start, int src, int dest)
     free(ver);
     free(help);
     return distance;
+}
+p_dijkstra getPointerDijkstra(p_dijkstra head, int id)
+{
+    while (head != NULL)
+    {
+        if (head->node->nodeId == id)
+        {
+            return head;
+        }
+        head = head->next;
+    }
+    return NULL;
 }
